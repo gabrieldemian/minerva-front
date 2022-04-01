@@ -1,0 +1,115 @@
+/* @link https://utopia.fyi/type/calculator?c=320,16,1.125,1800,18,1.25,6,3,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
+
+:root {
+  --step--3: clamp(0.7rem, 0.73rem + -0.14vw, 0.58rem);
+  --step--2: clamp(0.79rem, 0.81rem + -0.08vw, 0.72rem);
+  --step--1: clamp(0.89rem, 0.89rem + 0.01vw, 0.9rem);
+  --step-0: clamp(1rem, 0.97rem + 0.14vw, 1.13rem);
+  --step-1: clamp(1.13rem, 1.06rem + 0.3vw, 1.41rem);
+  --step-2: clamp(1.27rem, 1.16rem + 0.53vw, 1.76rem);
+  --step-3: clamp(1.42rem, 1.26rem + 0.84vw, 2.2rem);
+  --step-4: clamp(1.6rem, 1.35rem + 1.24vw, 2.75rem);
+  --step-5: clamp(1.8rem, 1.45rem + 1.76vw, 3.43rem);
+  --step-6: clamp(2.03rem, 1.54rem + 2.45vw, 4.29rem);
+}
+
+p.hasMargin,
+.p.hasMargin {
+  margin-bottom: 2rem;
+}
+
+h1.hasMargin,
+.h1.hasMargin,
+h2.hasMargin,
+.h2.hasMargin,
+h3.hasMargin,
+.h3.hasMargin,
+h4.hasMargin,
+.h4.hasMargin,
+h5.hasMargin,
+.h5.hasMargin,
+h6.hasMargin,
+.h6.hasMargin {
+  margin-bottom: 1.38rem;
+}
+
+h1 .h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  font-weight: 700;
+  line-height: 1.3;
+  @apply text-secondary;
+}
+
+tiny,
+.tiny {
+  font-size: var(--step--2);
+}
+
+small,
+.small,
+button {
+  font-size: var(--step--1);
+}
+
+button, a {
+  @apply font-extrabold !important;
+}
+
+.link {
+  color: var(--purple);
+  font-size: var(--step-0);
+}
+
+a {
+  font-size: var(--step-0);
+}
+
+p,
+.p {
+  font-size: var(--step-0);
+  @apply text-primary;
+}
+
+h6,
+.h6 {
+  font-size: var(--step-1);
+}
+
+h5,
+.h5 {
+  font-size: var(--step-2);
+}
+
+h4,
+.h4 {
+  font-size: var(--step-3);
+}
+
+h3,
+.h3 {
+  font-size: var(--step-4);
+}
+
+h2,
+.h2 {
+  font-size: var(--step-5);
+}
+
+.h1,
+h1 {
+  margin-top: 0;
+  font-size: var(--step-6);
+}
+
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */

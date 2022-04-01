@@ -1,0 +1,222 @@
+{
+  "version": "0.0.1",
+  "name": "web3_email",
+  "instructions": [
+    {
+      "name": "sendEmail",
+      "accounts": [
+        {
+          "name": "mail",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        }
+      ],
+      "args": [
+        {
+          "name": "subject",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "from",
+          "type": "publicKey"
+        },
+        {
+          "name": "to",
+          "type": "publicKey"
+        },
+        {
+          "name": "salt",
+          "type": "string"
+        },
+        {
+          "name": "iv",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "register",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "diffiePubkey",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "updateAccount",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "userAccount",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "diffiePubkey",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Mail",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "from",
+            "type": "publicKey"
+          },
+          {
+            "name": "to",
+            "type": "publicKey"
+          },
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "subject",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "type": "string"
+          },
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "createdAt",
+            "type": "u32"
+          },
+          {
+            "name": "iv",
+            "type": "string"
+          },
+          {
+            "name": "salt",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UserAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "diffiePubkey",
+            "type": "string"
+          },
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "NewEmailEvent",
+      "fields": [
+        {
+          "name": "from",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "to",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "index": false
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "InvalidInstruction",
+      "msg": "Invalid instruction"
+    },
+    {
+      "code": 6001,
+      "name": "InvalidBody",
+      "msg": "The body of your email is too long. The max is 512 chars"
+    },
+    {
+      "code": 6002,
+      "name": "InvalidSubject",
+      "msg": "The subject of your email is too long. The max is 40 chars"
+    },
+    {
+      "code": 6003,
+      "name": "InvalidSalt",
+      "msg": "The salt should be exactly 16 chars"
+    },
+    {
+      "code": 6004,
+      "name": "InvalidIv",
+      "msg": "The IV should be exactly 32 chars"
+    },
+    {
+      "code": 6005,
+      "name": "InvalidDiffie",
+      "msg": "The diffie publickey should be exactly 64 chars"
+    }
+  ],
+  "metadata": {
+    "address": "58negkrPqDv4g6wphz4T1wqUNsWRsp2h9nFRoscVQrdr"
+  }
+}

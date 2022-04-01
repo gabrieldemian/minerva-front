@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* UI & surface colors */
+
+  --gray: #c4c4c4;
+  --gray-100: #8f9193;
+  --gray-200: #c2c2c2;
+  --gray-300: #303030;
+  --gray-300-75: #303030ad;
+  --gray-400: #242424;
+
+  --bg-primary: var(--gray-400);
+  --bg-secondary: var(--gray-300);
+
+  --text-primary: var(--gray-100);
+  --text-secondary: var(--gray);
+
+  /* Brand colors */
+  --red-violet: #ef4444;
+
+  --dark-blue: #353739;
+}
+
+.overlay {
+  @apply bg-primary opacity-70 w-full h-full absolute cursor-pointer backdrop-blur;
+}
+
+html,
+body {
+  @apply bg-primary text-primary overflow-x-hidden break-words font-nunito font-semibold;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOutLeft {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+.lock-scroll {
+  overflow-y: hidden !important;
+}
