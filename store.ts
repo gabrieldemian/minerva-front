@@ -1,4 +1,4 @@
-import create, { PartialState, State, StateCreator } from 'zustand'
+import create, { State, StateCreator, PartialState } from 'zustand'
 import { Idl, Program } from '@project-serum/anchor'
 import { PhantomProvider } from './types'
 import produce, { Draft } from 'immer'
@@ -53,7 +53,7 @@ export const useStore = create<StoreState>(
       program: null,
       provider: null,
       isUserRegistered: false,
-      mutate: (key: keyof StoreState, value: any) =>
+      mutate: (key: keyof StoreState, value: StoreState[typeof key]) =>
         set({ [key]: value } as PartialState<StoreState, keyof StoreState>)
     }))
   )

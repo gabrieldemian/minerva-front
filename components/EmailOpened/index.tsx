@@ -141,7 +141,7 @@ const EmailOpened = () => {
         )}
       </>
     ),
-    [email, decryptedBody, privateKey, shouldHidePrivate]
+    [email, decryptedBody, privateKey, shouldHidePrivate, activeEmail]
   )
 
   return (

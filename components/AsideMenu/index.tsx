@@ -27,7 +27,7 @@ const Aside = () => {
         <div className="mx-5 mb-5 lg:mb-10">
           <Link href="/new-email">
             <a>
-              <Button fluid>New Email</Button>
+              <Button fluid>Write a New Email</Button>
             </a>
           </Link>
         </div>

@@ -63,6 +63,7 @@ const useUser = (): Hooks => {
     return mails
   }
 
+  /* can either register a new user or update its account */
   /* receives an useState mutation of a TxObj */
   const handleDiffieKey = useCallback(
     async (

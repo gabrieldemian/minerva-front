@@ -66,7 +66,6 @@ function MyApp({ Component, pageProps }) {
 
   /* TODO: listen to custom events of my contract */
 
-  /* listen to phantom wallet events */
   useEffect(() => {
     if (window['solana']?.isPhantom) {
       window?.solana?.connect({ onlyIfTrusted: true })

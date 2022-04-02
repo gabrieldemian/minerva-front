@@ -1,5 +1,5 @@
+import { useState, OneForm, useCallback, useEffect } from '@/libraries'
 import { Button, Input, Loading, Modal } from '@/components'
-import { useState, OneForm, useCallback } from '@/libraries'
 import { web3 } from '@project-serum/anchor'
 import { PublicKey } from '@solana/web3.js'
 import { useUser, useMail } from '@/hooks'
@@ -53,13 +53,16 @@ const validations = {
 const NewEmail = () => {
   const { fetchUsers } = useUser()
   const { refetchEmails } = useMail()
-  const [values, setValues] = useState({})
+  // const [values, setValues] = useState({})
   const [status, setStatus] = useState<TxObj>()
   const [shouldHidePrivate, setShouldHidePrivate] = useState<boolean>(true)
 
   const program = useStore(state => state.program)
+  const mutate = useStore(state => state.mutate)
   const pubkey = useStore(state => state.pubkey)
   const elliptic = useStore(state => state.elliptic)
+
+  useEffect(() => mutate('activeEmail', null), [])
 
   const onSubmit = useCallback(async ({ registeredValues }) => {
     const { to, myPrivate, body, subject } = registeredValues
@@ -129,14 +132,14 @@ const NewEmail = () => {
 
     /* refetch the sent emails */
     await refetchEmails()
-    setValues({})
+    // setValues({})
     setStatus({ status: 'success', msg: 'Email sent with success' })
   }, [])
 
   return (
     <>
       <h6 className="mb-5">Write a new email to someone</h6>
-      <OneForm validations={validations} onSubmit={onSubmit} values={values}>
+      <OneForm validations={validations} onSubmit={onSubmit}>
         <div className="flex flex-col gap-5">
           <Input name="to" placeholder="To" />
           <Input placeholder="Subject" name="subject" />
