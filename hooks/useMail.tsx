@@ -68,8 +68,6 @@ const useMail = (): Returns => {
 
   /* this will be used for both 'received' and 'sent' routes */
   const fetchEmails = async (toOrFrom: 'to' | 'from'): Promise<Email[]> => {
-    console.log('rendering fetchEmails', toOrFrom)
-
     const memcmpFilters = filters.map((filter: FilterObj) =>
       getMemcmp(filter.filter, filter.value)
     )

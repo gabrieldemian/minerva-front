@@ -10,7 +10,7 @@ const useLogin = (): Hooks => {
   const login = async () => {
     if (typeof window !== 'undefined') {
       const resp = await window.solana.connect()
-      mutate('pubKey', resp.publicKey.toString())
+      mutate('pubkey', resp.publicKey.toString())
     }
   }
 

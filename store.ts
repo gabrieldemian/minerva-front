@@ -11,7 +11,6 @@ interface StoreState {
   program: Program<Idl>
   isUserRegistered: boolean
   mutate: (key: string, value: any) => void
-  provider: PhantomProvider
   elliptic: ec
 }
 
@@ -22,7 +21,7 @@ const log =
       args => {
         console.log('applying', args)
         set(args)
-        // console.log('new state', get())
+        console.log('new state', get())
       },
       get,
       api
@@ -51,7 +50,6 @@ export const useStore = create<StoreState>(
       elliptic: new ec('curve25519'),
       pubkey: '',
       program: null,
-      provider: null,
       isUserRegistered: false,
       mutate: (key: keyof StoreState, value: StoreState[typeof key]) =>
         set({ [key]: value } as PartialState<StoreState, keyof StoreState>)
