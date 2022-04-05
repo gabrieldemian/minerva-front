@@ -38,7 +38,9 @@ function MyApp({ Component, pageProps }) {
     ;(async () => {
       if (pubkey) {
         const user = await fetchUsers('authority', pubkey)
-        mutate('isUserRegistered', Boolean(user.length))
+        if (user) {
+          mutate('isUserRegistered', Boolean(user?.length))
+        }
       }
     })()
   }, [pubkey])
