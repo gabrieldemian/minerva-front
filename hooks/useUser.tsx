@@ -50,6 +50,8 @@ const useUser = (): Hooks => {
     filter: keyof typeof memcmpOffsetMap,
     value: string
   ): Promise<User[]> => {
+    if (!pubkey || !program) return
+
     setIsLoading(true)
 
     let memcmpFilters: GetProgramAccountsFilter[] = [getMemcmp(filter, value)]
