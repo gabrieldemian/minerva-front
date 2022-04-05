@@ -29,6 +29,7 @@ const queryClient = new QueryClient({
 function MyApp({ Component, pageProps }) {
   const mutate = useStore(state => state.mutate)
   const pubkey = useStore(state => state.pubkey)
+  const program = useStore(state => state.program)
   const isUserRegistered = useStore(state => state.isUserRegistered)
   const [shouldWarnAboutPhantom, setshouldWarnAboutPhantom] = useState(false)
   const { fetchUsers } = useUser()
@@ -36,14 +37,14 @@ function MyApp({ Component, pageProps }) {
   /* when the user connect, checks if he is registered */
   useEffect(() => {
     ;(async () => {
-      if (pubkey) {
+      if (pubkey && program) {
         const user = await fetchUsers('authority', pubkey)
         if (user) {
           mutate('isUserRegistered', Boolean(user?.length))
         }
       }
     })()
-  }, [pubkey])
+  }, [pubkey, program])
 
   /* if user has phantom wallet, instantiate a few classes */
   /* if not, tell him to install phantom */
