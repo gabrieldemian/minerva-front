@@ -70,18 +70,22 @@ function MyApp({ Component, pageProps }) {
   /* TODO: listen to custom events of my contract */
 
   useEffect(() => {
-    if (window['solana']?.isPhantom) {
-      window?.solana?.connect({ onlyIfTrusted: true })
-      window?.solana?.on('connect', (pubkey: PublicKey) =>
-        mutate('pubkey', pubkey.toString())
-      )
-      window?.solana?.on('disconnect', () => mutate('pubkey', null))
-      window?.solana?.on('accountChanged', (pubkey: PublicKey) => {
-        mutate('pubkey', pubkey.toString())
-        mutate('activeEmail', null)
-      })
-      initProgram()
+    const listenToEvents = () => {
+      if (window['solana']?.isPhantom) {
+        window?.solana?.connect({ onlyIfTrusted: true })
+        window?.solana?.on('connect', (pubkey: PublicKey) =>
+          mutate('pubkey', pubkey.toString())
+        )
+        window?.solana?.on('disconnect', () => mutate('pubkey', null))
+        window?.solana?.on('accountChanged', (pubkey: PublicKey) => {
+          mutate('pubkey', pubkey.toString())
+          mutate('activeEmail', null)
+        })
+        initProgram()
+      }
     }
+    listenToEvents()
+    setTimeout(() => listenToEvents(), 500)
   }, [])
 
   return (
